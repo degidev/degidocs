@@ -22,6 +22,7 @@ export default defineConfig({
                 src: '@assets/degidocs.png',
                 alt: 'Logo de la documentación'
             },
+			favicon: '/degi.png',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/degidev/degidocs' }
 			],
