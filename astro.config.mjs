@@ -19,7 +19,7 @@ export default defineConfig({
 			customCss: ['./src/style/starlight.css'],
 			title: 'degidocs',
 			logo: {
-                src: '@assets/degi.png',
+                src: '@assets/degidocs.png',
                 alt: 'Logo de la documentación'
             },
 			social: [
