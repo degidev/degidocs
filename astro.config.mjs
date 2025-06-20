@@ -23,7 +23,7 @@ export default defineConfig({
                 alt: 'Logo de la documentación'
             },
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/degidev/degidoc' }
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/degidev/degidocs' }
 			],
 			sidebar: [
 				{
