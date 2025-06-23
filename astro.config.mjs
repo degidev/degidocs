@@ -19,11 +19,12 @@ export default defineConfig({
 			customCss: ['./src/style/starlight.css'],
 			title: 'degidocs',
 			logo: {
-                src: '@assets/degi.png',
+                src: '@assets/degidocs.png',
                 alt: 'Logo de la documentación'
             },
+			favicon: '/degi.png',
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/degidev/degidoc' }
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/degidev/degidocs' }
 			],
 			sidebar: [
 				{
