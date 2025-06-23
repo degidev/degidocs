@@ -143,11 +143,12 @@ export default defineConfig({
 						{ label: '7. Formularios y Validación', link: '/guides/laravel/forms-validation/' },
 						{ label: '8. Autenticación y Autorización', link: '/guides/laravel/auth/' },
 						{ label: '9. Migraciones y Base de Datos', link: '/guides/laravel/migrations-database/' },
-						{ label: '10. API REST y JSON', link: '/guides/laravel/api-rest/' },
-						{ label: '11. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
-						{ label: '12. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
-						{ label: '13. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
-						{ label: '14. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
+						{ label: '10. Relaciones y Claves Foráneas', link: '/guides/laravel/relationships/' },
+						{ label: '11. API REST y JSON', link: '/guides/laravel/api-rest/' },
+						{ label: '12. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
+						{ label: '13. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
+						{ label: '14. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
+						{ label: '15. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
 					]	
 				},	
 				{
