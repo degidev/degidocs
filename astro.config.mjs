@@ -144,11 +144,12 @@ export default defineConfig({
 						{ label: '8. Autenticación y Autorización', link: '/guides/laravel/auth/' },
 						{ label: '9. Migraciones y Base de Datos', link: '/guides/laravel/migrations-database/' },
 						{ label: '10. Relaciones y Claves Foráneas', link: '/guides/laravel/relationships/' },
-						{ label: '11. API REST y JSON', link: '/guides/laravel/api-rest/' },
-						{ label: '12. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
-						{ label: '13. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
-						{ label: '14. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
-						{ label: '15. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
+						{ label: '11. Factories y Seeders', link: '/guides/laravel/factories-seeders/' },
+						{ label: '12. API REST y JSON', link: '/guides/laravel/api-rest/' },
+						{ label: '13. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
+						{ label: '14. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
+						{ label: '15. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
+						{ label: '16. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
 					]	
 				},	
 				{
@@ -158,6 +159,18 @@ export default defineConfig({
 						{ label: '1. Introducción a Inertia', link: '/guides/innertia/introduction/' },
 					]	
 				},	
+				{
+					label: 'Ziggy.js',
+					collapsed: true,
+					items: [
+						{ label: '01. Introducción a Ziggy.js', link: '/guides/ziggy/introduction/' },
+						{ label: '02. Instalación y configuración básica', link: '/guides/ziggy/installation/' },
+						{ label: '03. Uso básico en JavaScript puro', link: '/guides/ziggy/basic-usage/' },
+						{ label: '04. Uso de Ziggy en Vue 3', link: '/guides/ziggy/vue-integration/' },
+						{ label: '05. Configuración avanzada', link: '/guides/ziggy/configuration/' },
+						{ label: '06. Interacción con rutas y API REST', link: '/guides/ziggy/api-rest/' }
+					]
+				},
 				{
 					label: 'Referencia',
 					collapsed: true,
