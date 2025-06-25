@@ -251,6 +251,349 @@ $productosActivos = Producto::activos()->get();
 // Combinando scopes
 $productosDestacadosConStock = Producto::destacados()->conStock()->get();`} lang="php" />
 
+## Creación y actualización de registros
+
+Eloquent proporciona métodos intuitivos para crear, actualizar y eliminar registros en la base de datos.
+
+## Creando registros
+
+### Método create
+
+El método `create` permite crear un nuevo registro en la base de datos utilizando un array de atributos. Para que este método funcione, es necesario definir la propiedad `$fillable` o `$guarded` en el modelo para especificar qué atributos pueden ser asignados masivamente.
+
+<Tabs>
+<TabItem label="Modelo">
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Producto extends Model
+{
+    /**
+     * Los atributos que son asignables masivamente.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'precio',
+        'categoria_id',
+        'stock'
+    ];
+}
+```
+
+</TabItem>
+<TabItem label="Uso">
+
+```php
+// Crear un producto con el método create
+$producto = Producto::create([
+    'nombre' => 'Nuevo Producto',
+    'descripcion' => 'Descripción del producto',
+    'precio' => 99.99,
+    'categoria_id' => 1,
+    'stock' => 100
+]);
+
+// El ID del nuevo producto está disponible
+echo $producto->id;
+```
+
+</TabItem>
+</Tabs>
+
+## Instanciando un modelo
+
+También puedes crear un modelo instanciándolo primero y luego llamando al método `save`:
+
+<Code code={`// Crear una instancia del modelo
+$producto = new Producto;
+
+// Asignar atributos
+$producto->nombre = 'Nuevo Producto';
+$producto->descripcion = 'Descripción del producto';
+$producto->precio = 99.99;
+$producto->categoria_id = 1;
+$producto->stock = 100;
+
+// Guardar el modelo en la base de datos
+$producto->save();`} lang="php" />
+
+### Asignación masiva con fill
+
+El método `fill` permite asignar múltiples atributos a la vez:
+
+<Code code={`$producto = new Producto;
+
+// Asignar múltiples atributos a la vez
+$producto->fill([
+    'nombre' => 'Nuevo Producto',
+    'descripcion' => 'Descripción del producto',
+    'precio' => 99.99,
+    'categoria_id' => 1,
+    'stock' => 100
+]);
+
+$producto->save();`} lang="php" />
+
+### Método firstOrCreate
+
+Busca un registro con los atributos dados o lo crea si no existe:
+
+<Code code={`// Buscar por nombre o crear si no existe
+$producto = Producto::firstOrCreate(
+    ['nombre' => 'Producto Único'], // Atributos para buscar
+    [
+        'descripcion' => 'Descripción por defecto',
+        'precio' => 99.99,
+        'categoria_id' => 1,
+        'stock' => 100
+    ] // Atributos adicionales si se crea
+);`} lang="php" />
+
+### Método firstOrNew
+
+Similar a `firstOrCreate`, pero no guarda automáticamente el modelo:
+
+<Code code={`// Buscar por nombre o crear una instancia si no existe
+$producto = Producto::firstOrNew(
+    ['nombre' => 'Producto Único'], // Atributos para buscar
+    [
+        'descripcion' => 'Descripción por defecto',
+        'precio' => 99.99,
+        'categoria_id' => 1,
+        'stock' => 100
+    ] // Atributos adicionales si se crea
+);
+
+// El modelo debe guardarse manualmente si es nuevo
+if ($producto->wasRecentlyCreated) {
+    // Realizar operaciones adicionales antes de guardar
+    $producto->save();
+}`} lang="php" />
+
+### Método updateOrCreate
+
+Actualiza un registro existente o crea uno nuevo si no existe:
+
+<Code code={`// Actualizar si existe o crear si no
+$producto = Producto::updateOrCreate(
+    ['nombre' => 'Producto Único'], // Atributos para buscar
+    [
+        'descripcion' => 'Descripción actualizada',
+        'precio' => 129.99,
+        'stock' => 50
+    ] // Atributos para actualizar o crear
+);`} lang="php" />
+
+## Actualizando registros
+
+### Actualizar un modelo existente
+
+<Code code={`// Obtener un producto existente
+$producto = Producto::find(1);
+
+// Actualizar atributos
+$producto->precio = 149.99;
+$producto->stock = 75;
+
+// Guardar los cambios
+$producto->save();`} lang="php" />
+
+### Actualización masiva
+
+El método `update` permite actualizar múltiples registros que coincidan con una consulta:
+
+<Code code={`// Actualizar todos los productos de una categoría
+Producto::where('categoria_id', 1)
+    ->update(['destacado' => true]);
+
+// Incrementar el precio de todos los productos en un 10%
+Producto::where('precio', '<', 100)
+    ->update([
+        'precio' => DB::raw('precio * 1.1')
+    ]);`} lang="php" />
+
+### Métodos de incremento y decremento
+
+Para campos numéricos, puedes usar los métodos `increment` y `decrement`:
+
+<Code code={`// Incrementar el stock en 5
+$producto = Producto::find(1);
+$producto->increment('stock', 5);
+
+// Decrementar el precio en 10 y actualizar campos adicionales
+$producto->decrement('precio', 10, [
+    'actualizado_por' => Auth::id()
+]);`} lang="php" />
+
+### Actualizar solo ciertos campos
+
+El método `only` permite seleccionar solo algunos campos para actualizar:
+
+<Code code={`$input = $request->all();
+
+// Actualizar solo los campos permitidos
+$producto = Producto::find(1);
+$producto->fill($input)->only(['nombre', 'descripcion'])->save();`} lang="php" />
+
+## Eliminando registros
+
+### Eliminar un modelo
+
+<Code code={`// Obtener y eliminar un producto
+$producto = Producto::find(1);
+$producto->delete();
+
+// Eliminar directamente por ID
+Producto::destroy(1);
+
+// Eliminar múltiples registros por ID
+Producto::destroy([1, 2, 3]);
+Producto::destroy(1, 2, 3);`} lang="php" />
+
+### Eliminación masiva
+
+<Code code={`// Eliminar todos los productos agotados
+Producto::where('stock', 0)->delete();`} lang="php" />
+
+### Soft Deletes (Eliminación suave)
+
+La eliminación suave permite "eliminar" registros sin borrarlos realmente de la base de datos:
+
+<Tabs>
+<TabItem label="Migración">
+
+```php
+Schema::create('productos', function (Blueprint $table) {
+    $table->id();
+    $table->string('nombre');
+    $table->text('descripcion')->nullable();
+    $table->decimal('precio', 8, 2);
+    $table->integer('stock')->default(0);
+    $table->timestamps();
+    $table->softDeletes(); // Añade la columna deleted_at
+});
+```
+
+</TabItem>
+<TabItem label="Modelo">
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Producto extends Model
+{
+    use SoftDeletes;
+    
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'precio',
+        'stock'
+    ];
+}
+```
+
+</TabItem>
+<TabItem label="Uso">
+
+```php
+// Eliminar suavemente (establece deleted_at)
+$producto = Producto::find(1);
+$producto->delete();
+
+// Restaurar un producto eliminado suavemente
+$producto = Producto::withTrashed()->find(1);
+$producto->restore();
+
+// Eliminar permanentemente
+$producto->forceDelete();
+```
+
+</TabItem>
+</Tabs>
+
+### Eventos del modelo
+
+Eloquent dispara varios eventos durante el ciclo de vida de un modelo, que puedes utilizar para ejecutar código adicional:
+
+<Code code={`<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Producto extends Model
+{
+    /**
+     * Los atributos asignables masivamente.
+     */
+    protected $fillable = [
+        'nombre', 'precio', 'stock'
+    ];
+    
+    /**
+     * El método "booted" del modelo.
+     */
+    protected static function booted()
+    {
+        // Antes de crear un producto
+        static::creating(function ($producto) {
+            // Generar un SKU único
+            $producto->sku = 'PROD-' . strtoupper(uniqid());
+        });
+        
+        // Después de crear un producto
+        static::created(function ($producto) {
+            // Registrar actividad
+            Activity::log('Producto creado: ' . $producto->nombre);
+        });
+        
+        // Antes de actualizar
+        static::updating(function ($producto) {
+            // Validaciones adicionales
+            if ($producto->precio < 0) {
+                return false; // Cancelar la actualización
+            }
+        });
+        
+        // Después de actualizar
+        static::updated(function ($producto) {
+            // Limpiar caché
+            Cache::forget('producto:' . $producto->id);
+        });
+        
+        // Antes de eliminar
+        static::deleting(function ($producto) {
+            // Verificar si se puede eliminar
+            if ($producto->pedidos()->count() > 0) {
+                return false; // Cancelar la eliminación
+            }
+        });
+    }
+}`} lang="php" />
+
+Los eventos disponibles son:
+- `retrieved`: Después de obtener un modelo existente de la base de datos
+- `creating` / `created`: Antes/después de crear un nuevo modelo
+- `updating` / `updated`: Antes/después de actualizar un modelo existente
+- `saving` / `saved`: Antes/después de crear o actualizar un modelo
+- `deleting` / `deleted`: Antes/después de eliminar un modelo
+- `restoring` / `restored`: Antes/después de restaurar un modelo con soft delete
+- `replicating`: Antes de replicar un modelo
+
 ## Relaciones en Eloquent
 
 Las relaciones en Eloquent permiten definir conexiones entre modelos. Laravel soporta varios tipos de relaciones:

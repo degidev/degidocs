@@ -157,7 +157,18 @@ export default defineConfig({
 					label: 'Inertia',
 					collapsed: true,
 					items: [
-						{ label: '1. Introducción a Inertia', link: '/guides/innertia/introduction/' },
+						{ label: '1. Introducción a Inertia.js', link: '/guides/inertia/introduction/' },
+						{ label: '2. Instalación y configuración inicial', link: '/guides/inertia/installation/' },
+						{ label: '3. Rutas y controladores en Laravel', link: '/guides/inertia/routes-controllers/' },
+						{ label: '4. Componentes en Vue 3', link: '/guides/inertia/vue-components/' },
+						{ label: '5. Layouts y estructura de páginas', link: '/guides/inertia/layouts/' },
+						{ label: '6. Navegación entre páginas', link: '/guides/inertia/navigation/' },
+						{ label: '7. Formularios y useForm', link: '/guides/inertia/forms/' },
+						{ label: '8. Manejo de respuestas y redirecciones', link: '/guides/inertia/responses-redirects/' },
+						{ label: '9. Props compartidas (Shared Props)', link: '/guides/inertia/shared-props/' },
+						{ label: '10. Carga diferida y Lazy Loading', link: '/guides/inertia/lazy-loading/' },
+						{ label: '11. Middlewares y autenticación', link: '/guides/inertia/middleware-auth/' },
+						{ label: '12. Integración con otras librerías', link: '/guides/inertia/integrations/' }
 					]	
 				},	
 				{
