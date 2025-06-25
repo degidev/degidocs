@@ -138,18 +138,19 @@ export default defineConfig({
 						{ label: '2. Instalación y Configuración', link: '/guides/laravel/installation/' },
 						{ label: '3. Rutas (Routing)', link: '/guides/laravel/routing/' },
 						{ label: '4. Controladores', link: '/guides/laravel/controllers/' },
-						{ label: '5. Vistas con Blade', link: '/guides/laravel/blade/' },
-						{ label: '6. Eloquent ORM', link: '/guides/laravel/eloquent/' },
-						{ label: '7. Formularios y Validación', link: '/guides/laravel/forms-validation/' },
-						{ label: '8. Autenticación y Autorización', link: '/guides/laravel/auth/' },
-						{ label: '9. Migraciones y Base de Datos', link: '/guides/laravel/migrations-database/' },
-						{ label: '10. Relaciones y Claves Foráneas', link: '/guides/laravel/relationships/' },
-						{ label: '11. Factories y Seeders', link: '/guides/laravel/factories-seeders/' },
-						{ label: '12. API REST y JSON', link: '/guides/laravel/api-rest/' },
-						{ label: '13. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
-						{ label: '14. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
-						{ label: '15. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
-						{ label: '16. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
+						{ label: '5. Modelos', link: '/guides/laravel/models/' },
+						{ label: '6. Vistas con Blade', link: '/guides/laravel/blade/' },
+						{ label: '7. Eloquent ORM', link: '/guides/laravel/eloquent/' },
+						{ label: '8. Formularios y Validación', link: '/guides/laravel/forms-validation/' },
+						{ label: '9. Autenticación y Autorización', link: '/guides/laravel/auth/' },
+						{ label: '10. Migraciones y Base de Datos', link: '/guides/laravel/migrations-database/' },
+						{ label: '11. Relaciones y Claves Foráneas', link: '/guides/laravel/relationships/' },
+						{ label: '12. Factories y Seeders', link: '/guides/laravel/factories-seeders/' },
+						{ label: '13. API REST y JSON', link: '/guides/laravel/api-rest/' },
+						{ label: '14. Archivos, Storage y Uploads', link: '/guides/laravel/storage-uploads/' },
+						{ label: '15. Eventos, Listeners y Observers', link: '/guides/laravel/events-listeners/' },
+						{ label: '16. Jobs, Queues y Workers', link: '/guides/laravel/jobs-queues/' },
+						{ label: '17. Notificaciones y Correos', link: '/guides/laravel/notifications-mail/' }
 					]	
 				},	
 				{
@@ -160,7 +161,7 @@ export default defineConfig({
 					]	
 				},	
 				{
-					label: 'Ziggy.js',
+					label: 'Ziggy',
 					collapsed: true,
 					items: [
 						{ label: '01. Introducción a Ziggy.js', link: '/guides/ziggy/introduction/' },

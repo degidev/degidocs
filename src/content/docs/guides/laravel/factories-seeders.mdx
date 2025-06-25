@@ -57,6 +57,8 @@ Hay varias formas de ejecutar los seeders:
 php artisan db:seed
 ```
 
+Este comando ejecuta los seeders sin modificar la estructura de la base de datos, por lo que es seguro para usar en entornos con datos existentes.
+
 #### Ejecutar un seeder específico
 
 ```bash
@@ -473,13 +475,37 @@ Laravel permite establecer relaciones entre modelos dentro de los factories:
   </TabItem>
 </Tabs>
 
-### Ejecutar Seeders automáticamente
+### Ejecutar solo seeders o factories en entornos con datos existentes
+
+Cuando trabajas en un entorno con datos existentes y solo necesitas añadir datos adicionales sin modificar la estructura de la base de datos, puedes usar los siguientes comandos:
+
+```bash
+# Ejecutar todos los seeders sin rehacer migraciones
+php artisan db:seed
+
+# Ejecutar un seeder específico sin rehacer migraciones
+php artisan db:seed --class=UserSeeder
+
+# Ejecutar un factory directamente desde tinker
+php artisan tinker
+>>> App\Models\User::factory()->count(10)->create(); // Crear 10 usuarios
+>>> exit
+```
+
+<Aside type="tip">
+  Los factories no tienen un comando Artisan dedicado para ejecutarlos directamente (como `db:seed`). Para ejecutar factories sin escribir seeders, puedes usar Laravel Tinker o crear un comando Artisan personalizado.
+</Aside>
+
+### Integrar seeders con el comando migrate
 
 Puedes combinar migraciones y seeders en un solo comando, lo que es especialmente útil durante el desarrollo:
 
 ```bash
 # Refresca la base de datos y ejecuta los seeders
 php artisan migrate:fresh --seed
+
+# Ejecuta migraciones pendientes y luego los seeders (no elimina datos existentes)
+php artisan migrate --seed
 
 # Refresca solo algunas tablas y ejecuta los seeders
 php artisan migrate:fresh --seed --path=database/migrations/2023_*
