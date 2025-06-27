@@ -184,6 +184,22 @@ export default defineConfig({
 					]
 				},
 				{
+					label: 'Alpine.js',
+					collapsed: true,
+					items: [
+						{ label: '01. Introducción a Alpine.js', link: '/guides/alpine/introduction/' },
+						{ label: '02. Instalación y configuración', link: '/guides/alpine/installation/' },
+						{ label: '03. Sintaxis básica y directivas', link: '/guides/alpine/syntax/' },
+						{ label: '04. Reactividad y estado', link: '/guides/alpine/reactivity/' },
+						{ label: '05. Eventos y manejo de acciones', link: '/guides/alpine/events/' },
+						{ label: '06. Ciclo de vida', link: '/guides/alpine/lifecycle/' },
+						{ label: '07. Componentes y scopes', link: '/guides/alpine/components/' },
+						{ label: '08. Plugins y extensiones', link: '/guides/alpine/plugins/' },
+						{ label: '09. Integración con otras librerías', link: '/guides/alpine/integrations/' },
+						{ label: '10. Casos de uso y ejemplos', link: '/guides/alpine/examples/' }
+					]
+				},
+				{
 					label: 'Referencia',
 					collapsed: true,
 					autogenerate: { directory: 'reference' },
